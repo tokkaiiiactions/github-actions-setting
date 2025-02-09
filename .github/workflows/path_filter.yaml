@@ -2,7 +2,8 @@ name: path-filter
 on:
   push:
     paths:
-      - "README.md"
+      - ".github/workflows/part1/*"
+      - "!.github/workflows/part1/push.yaml"
 
 jobs:
   path-filter:
