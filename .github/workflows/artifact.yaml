@@ -1,6 +1,6 @@
 name: artifact
 on:
-  push:
+  push
 
 jobs:
   upload-artifact:
@@ -9,7 +9,7 @@ jobs:
       - name: echo
         run: echo hello-world > hello.txt
       - name: upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: artifact-test
           paths: ./hello.txt
@@ -19,7 +19,7 @@ jobs:
     needs: [upload-artifact]
     steps:
       - name: download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: artifact-test
           path: ./
