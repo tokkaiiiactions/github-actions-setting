@@ -1,0 +1,30 @@
+name: create-repo
+on:
+  workflow_dispatch
+    inputs:
+      prefix:
+        description: "Prefix for the repository name"
+        required: true
+        default: "service"
+        type: choice
+        options:
+          - service
+          - app
+      name:
+        description: "Name for the repository"
+        required: true
+        default: "test"
+        type: string
+
+jobs:
+  create-repo-automaiton:
+    runs-on: ubuntu-latest
+    steps:
+      - name: gh auth login
+        run: |
+          echo ${{ secrets.PERSONAL_ACCESS_TOKEN }} | gh auth login --with-token
+      - name: create-repo
+        run: |
+          gh repo create tokkaiiiiactions/${{ inputs.prefix }}-${{ inputs.name }} --public --add-readme
+
+  
