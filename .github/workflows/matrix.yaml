@@ -1,0 +1,16 @@
+name: matrix
+on:
+  push
+
+jobs:
+  get-matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-latest]
+        version: [12, 14]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: get matrix
+        run: |
+          echo "OS: ${{ matrix.os }}"
+          echo "VERSION: ${{ matrix.version }}"
